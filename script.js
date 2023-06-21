@@ -17,6 +17,7 @@ const db = knex({
       database : 'react-project'
     }
   });
+const PORT = process.env.PORT || 3000;
 
 //  db.select('*').from('users').then(data => {
 //     console.log(data);
@@ -113,6 +114,6 @@ app.put('/image', (req, res) => {
     })
 })
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
     console.log("Server started!");
 })
