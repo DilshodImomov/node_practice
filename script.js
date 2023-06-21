@@ -10,11 +10,11 @@ app.use(cors());
 const db = knex({
     client: 'pg',
     connection: {
-      host : '127.0.0.1',
+      host : 'dpg-ci9e8sh8g3ne2eii2i20-a',
       port : 5432,
-      user : '',
-      password : '',
-      database : 'react-project'
+      user : 'dilshod',
+      password : '8RT3hlgtGvlAuwicyGvq3JYbu2wBoi2X',
+      database : 'db_jk8j'
     }
   });
 const PORT = process.env.PORT || 3000;
