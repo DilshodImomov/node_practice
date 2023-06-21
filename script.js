@@ -52,43 +52,43 @@ app.get('/', (req, res) => {
 
 app.post('/signin', (req, res) => {
     const {email, password} = req.body;
-    // if ( req.body.email === database.users[0].email && req.body.password === database.users[0].password ) {
-    //     res.json(database.users[0]);
-    // }
-    // else {
-    //     res.json("Something went wrong!");
-    // }
-    db.select('*').from('users').where({email}).then(user => {
-         if ( user.length ) {
-            if ( bcrypt.compareSync(password, user[0].passwordhash) ) {
-                res.json(user[0]);
-            }
-            else {
-                res.json("Wrong credentials!");
-            }
-        }
-        else {
-            res.json("Wrong credentials!");
-        }
-    }).catch( err => {
-        res.status(400).json("Something went wrong!" + err);
-    });
+    if ( req.body.email === database.users[0].email && req.body.password === database.users[0].password ) {
+        res.json(database.users[0]);
+    }
+    else {
+        res.json("Something went wrong!");
+    }
+    // db.select('*').from('users').where({email}).then(user => {
+    //      if ( user.length ) {
+    //         if ( bcrypt.compareSync(password, user[0].passwordhash) ) {
+    //             res.json(user[0]);
+    //         }
+    //         else {
+    //             res.json("Wrong credentials!");
+    //         }
+    //     }
+    //     else {
+    //         res.json("Wrong credentials!");
+    //     }
+    // }).catch( err => {
+    //     res.status(400).json("Something went wrong!" + err);
+    // });
 });
 
 app.post('/register', (req, res) => {
     const {name, email, password} = req.body;
     const passwordHash = bcrypt.hashSync(password, 10);
-    db('users').returning('*')
-    .insert({
-        name: name,
-        email: email,
-        joined: new Date(),
-        passwordhash: passwordHash
-    }).then(user => {
-        res.json(user[0]);
-    }).catch( err => {
-        res.status(400).json("Unable to connect");
-    } );
+    // db('users').returning('*')
+    // .insert({
+    //     name: name,
+    //     email: email,
+    //     joined: new Date(),
+    //     passwordhash: passwordHash
+    // }).then(user => {
+    //     res.json(user[0]);
+    // }).catch( err => {
+    //     res.status(400).json("Unable to connect");
+    // } );
 });
 
 app.get('/profile/:id', (req, res) => {
