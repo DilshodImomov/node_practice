@@ -78,6 +78,7 @@ app.post('/signin', (req, res) => {
 app.post('/register', (req, res) => {
     const {name, email, password} = req.body;
     const passwordHash = bcrypt.hashSync(password, 10);
+    console.log(name, email, password);
     db('users').returning('*')
     .insert({
         name: name,
