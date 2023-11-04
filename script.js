@@ -26,24 +26,7 @@ const PORT = process.env.PORT || 3000;
  })  
 
 const database = {
-    users: [
-        {
-            id: "1",
-            name: 'Dilshod',
-            email: 'dilshod@gmail.com',
-            entries: 0,
-            password: '123',
-            joined: new Date()
-        },
-        {
-            id: "2",
-            name: 'Sulton',
-            email: 'sulton@gmail.com',
-            entries: 0,
-            password: '456',
-            joined: new Date()
-        }
-    ]
+    users: []
 }
 
 app.get('/', (req, res) => {
@@ -78,7 +61,6 @@ app.post('/signin', (req, res) => {
 app.post('/register', (req, res) => {
     const {name, email, password} = req.body;
     const passwordHash = bcrypt.hashSync(password, 10);
-    console.log(name, email, password);
     db('users').returning('*')
     .insert({
         name: name,
