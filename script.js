@@ -17,20 +17,10 @@ const db = knex({
       database : 'react_practice_db'
     }
   });
-const PORT = process.env.PORT || 3000;
-
- db.select('*').from('users').then(data => {
-    console.log(data);
- }).catch(err => {
-    console.log("error", err);
- })  
-
-const database = {
-    users: []
-}
+const PORT = process.env.PORT || 3000; 
 
 app.get('/', (req, res) => {
-    res.send(database.users);
+    res.send("welcome");
 });
 
 app.post('/signin', (req, res) => {
